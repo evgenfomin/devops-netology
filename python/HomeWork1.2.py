@@ -5,9 +5,9 @@ YourDate = int(input("ВВедите дату вашего рождения в �
 
 if YourMonth < 12 or YourDate < 31:
     if (YourMonth == 12 and 21 < YourDate <= 31) or (YourMonth == 1 and 0 < YourDate < 20):
-        print ("Вы козерог")
+        print (f"Вы козерог, родились {YourDate}.{YourMonth}")
     if (YourMonth == 1 and 20 < YourDate <= 31) or (YourMonth == 2 and 0 < YourDate <= 18):
-        print ("Вы водолей")
+        print (f"Вы водолей, родились {YourDate}.{YourMonth}")
 
 else:
     print ("не правильно введенная дата")
