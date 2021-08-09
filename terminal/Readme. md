@@ -1,0 +1,13 @@
+ history-size (unset)
+              Set the maximum number of history entries saved in the history list.  If set to zero, any existing history entries are deleted and  no  new  entries
+              are saved.  If set to a value less than zero, the number of history entries is not limited.  By default, the number of history entries is set to the
+              value of the HISTSIZE shell variable.  If an attempt is made to set history-size to a non-numeric value, the maximum number of history entries  will
+              If set to On, history lines that have been modified are displayed with a preceding asterisk (*).
+
+A value of ignoreboth is shorthand for ignorespace and ignoredups.  A value of erasedups causes all previous lines matching the current line
+
+       { list; }
+              list  is  simply executed in the current shell environment.  list must be terminated with a newline or semicolon.  This is known as a group command.
+              The return status is the exit status of list.  Note that unlike the metacharacters ( and ), { and } are reserved words and must occur  where  a  re‐
+              served  word  is  permitted to be recognized.  Since they do not cause a word break, they must be separated from list by whitespace or another shell
+              metacharacter.
