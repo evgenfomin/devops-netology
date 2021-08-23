@@ -1,0 +1,53 @@
+1
+    evgeniy@evgeniyPR:~$ type -t cd
+    builtin
+2
+    данную команду можно заменить grep <some_string> <some_file> -c
+    evgeniy@evgeniyPR:~$ nano netol
+    evgeniy@evgeniyPR:~$ grep asd netol | wc -l
+    1
+    evgeniy@evgeniyPR:~$ grep asd netol -c
+    1
+3
+    USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+    root           1  0.0  0.0 168020 11672 ?        Ss   авг18   0:11 /sbin/init splash
+4
+    ls /root/ 2>/dev/pts/0
+5
+    да получится
+    evgeniy@evgeniyPR:~$ cat netol
+    123
+    asd
+    zxc
+    evgeniy@evgeniyPR:~$ cat <netol >netol_out
+    evgeniy@evgeniyPR:~$ cat  netol_out
+    123
+    asd
+    zxc
+    evgeniy@evgeniyPR:~$
+6
+    Да получится, только надо переключиться в tty ctrl+alt+F3
+7
+    bash 5>&1 создаст дискриптор 5 и перенаправит stdout
+    echo netology > /proc/$$/fd/5 - выведет в дескриптор "5", который был пернеаправлен в stdout
+8
+    ls /root/ 5>&2 2>&1 1>$5
+9
+    Будут выведены переменые окружения
+10
+    /proc/<PID>/cmdline - полный путь до исполняемого файла процесса [PID]
+    /proc/<PID>/exe - содержит ссылку до файла запущенного для процесса [PID]
+11
+    sse 4.2
+    cat /proc/cpuinfo | grep sse
+12
+    я не нашел, но думаю что пока не залогинешся не появится.
+13
+    после установки заначения  kernel.yama.ptrace_scope = 0
+    после чего процесс был перехвачен в screen, и продолжил работу после закрытия терминала.
+14
+    Команда tee делает вывод в файл и в stdout
+    В случае когда мы запускаем sudo echo string > /root/new_file мы делаем вывод от команды от root но когда делаем
+    перенаправоление то прав к катологу /root у нас уже нет
+    Во втором слчае мы делаем вывод на экран и записываем в файл с помощью комманды tee, а так как запускаем ее от
+    имени root, то ошибок не возникает
