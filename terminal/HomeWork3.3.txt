@@ -1,0 +1,20 @@
+1
+    chdir("/tmp")
+
+2
+    файл базы данных находится /usr/share/misc/magic.mgc
+    openat(AT_FDCWD, "/usr/share/misc/magic.mgc", O_RDONLY) = 3
+    fstat(3, {st_mode=S_IFREG|0644, st_size=5811536, ...}) = 0
+    mmap(NULL, 5811536, PROT_READ|PROT_WRITE, MAP_PRIVATE, 3, 0) = 0x7f7fbf10b000
+    close(3)                                = 0
+
+3
+
+
+4
+    Зомби процессы освобождают свои ресурсы
+    evgeniy@evgeniyPR:~/test$ ps aux | grep defunct
+    evgeniy     4130  0.0  0.0      0     0 ?        Zs   сен03   0:00 [bash] <defunct>
+    evgeniy     5754  0.0  0.0      0     0 ?        Z    сен03   0:00 [nm-pptp-auth-di] <defunct>
+
+5
