@@ -1,0 +1,90 @@
+1
+    Код запроса 301 это означает что страница перенаправлена в данном случае на https
+    telnet stackoverflow.com 80
+    Trying 151.101.1.69...
+    Connected to stackoverflow.com.
+    Escape character is '^]'.
+    GET /questions HTTP/1.0
+    HOST: stackoverflow.com
+
+    HTTP/1.1 301 Moved Permanently
+    cache-control: no-cache, no-store, must-revalidate
+    location: https://stackoverflow.com/questions
+    x-request-guid: f55c4c46-b94f-4394-a170-eba0f03c8863
+    feature-policy: microphone 'none'; speaker 'none'
+    content-security-policy: upgrade-insecure-requests; frame-ancestors 'self' https://stackexchange.com
+    Accept-Ranges: bytes
+    Date: Thu, 09 Sep 2021 06:10:52 GMT
+    Via: 1.1 varnish
+    Connection: close
+    X-Served-By: cache-hel6827-HEL
+    X-Cache: MISS
+    X-Cache-Hits: 0
+    X-Timer: S1631167853.851808,VS0,VE102
+    Vary: Fastly-SSL
+    X-DNS-Prefetch-Control: off
+    Set-Cookie: prov=71147874-d0af-7024-bfb3-553ba1577a60; domain=.stackoverflow.com; expires=Fri, 01-Jan-2055 00:00:00 GMT; path=/; HttpOnly
+    Connection closed by foreign host.
+
+2
+    первый ответ был тоже редирект
+    Request URL: http://stackoverflow.com/
+    Request Method: GET
+    Status Code: 301 Moved Permanently
+    Remote Address: 151.101.129.69:80
+    Referrer Policy: strict-origin-when-cross-origin
+
+    Дольше всего грузился запрос к документу https;//stackoverflow.com
+    293ms
+
+3
+    Использовал сайт https://myip.ru/
+    Ваш IP-адрес
+    94.231.116.43
+
+4
+    Мой внешний IP принадлежит компании Ростелеком
+    AS 24AS41854
+
+5
+    traceroute -An 8.8.8.8
+    traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+     1  10.10.20.1 [*]  8.295 ms  8.626 ms  9.080 ms
+     2  * * *
+     3  109.195.168.18 [AS56420]  11.234 ms  11.147 ms  11.149 ms
+     4  72.14.215.165 [AS15169]  13.721 ms  22.705 ms  16.653 ms
+     5  72.14.215.166 [AS15169]  16.561 ms  19.458 ms  19.399 ms
+     6  10.23.175.62 [*]  16.359 ms 10.23.140.254 [*]  30.807 ms 10.23.141.126 [*]  12.407 ms
+     7  108.170.226.90 [AS15169]  20.593 ms 108.170.227.88 [AS15169]  16.100 ms 108.170.250.33 [AS15169]  20.477 ms
+     8  108.170.250.34 [AS15169]  18.380 ms 108.170.250.66 [AS15169]  18.325 ms *
+     9  172.253.66.116 [AS15169]  62.146 ms 209.85.249.158 [AS15169]  58.971 ms 142.251.49.24 [AS15169]  55.063 ms
+    10  209.85.254.20 [AS15169]  56.214 ms 72.14.235.69 [AS15169]  58.811 ms 209.85.254.20 [AS15169]  56.107 ms
+    11  172.253.51.187 [AS15169]  58.794 ms 172.253.51.221 [AS15169]  64.353 ms 142.250.210.103 [AS15169]  43.209 ms
+    12  * * *
+    13  * * *
+    14  * * *
+    15  * * *
+    16  * * *
+    17  * * *
+    18  * * *
+    19  * * *
+    20  * * *
+    21  * 8.8.8.8 [AS15169]  75.600 ms *
+
+6
+    Наибольшая задержка идет на последнем участке
+
+7
+    DNS servers:
+    dns.google.		10800	IN	NS	ns2.zdns.google.
+    dns.google.		10800	IN	NS	ns4.zdns.google.
+    dns.google.		10800	IN	NS	ns1.zdns.google.
+    dns.google.		10800	IN	NS	ns3.zdns.google.
+
+    A-records
+    dns.google.		900	IN	A	8.8.8.8
+    dns.google.		900	IN	A	8.8.4.4
+
+8
+    8.8.8.8.in-addr.arpa.	10	IN	PTR	dns.google.
+    4.4.8.8.in-addr.arpa.	10	IN	PTR	dns.google.
