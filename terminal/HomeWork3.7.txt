@@ -1,0 +1,23 @@
+1
+    ip -c -br link
+    lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
+    enp2s0           DOWN           70:5a:0f:1d:eb:b5 <NO-CARRIER,BROADCAST,MULTICAST,UP>
+    wlp3s0           UP             08:d4:0c:d6:ac:9f <BROADCAST,MULTICAST,UP,LOWER_UP>
+    ppp0             UNKNOWN        <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP>
+
+2
+    LLDP - протокол для обменна данными между соседними интерфейсами
+    пакет lldpd
+    lldpctl - комманда
+    lldpctl
+    -------------------------------------------------------------------------------
+    LLDP neighbors:
+    -------------------------------------------------------------------------------
+
+3
+    VLAN - технология для разделения L2 коммутатора на несколько вертуальных сетей
+    пакет vlan     sudo apt install vlan
+    настройка выполняется через утилиту vconfig
+    настройка подинтерфейсов указывается в /etc/interfaces
+
+4
