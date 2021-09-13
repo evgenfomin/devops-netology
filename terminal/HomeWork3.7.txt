@@ -21,3 +21,45 @@
     настройка подинтерфейсов указывается в /etc/interfaces
 
 4
+    типы агрегации интерфейсов:
+        Mode-0(balance-rr)
+        Mode-1(active-backup)
+        Mode-2(balance-xor)
+        Mode-3(broadcast)
+        Mode-4(802.3ad)
+        Mode-5(balance-tlb)
+        Mode-6(balance-alb)
+
+    Бывает статическая и динамическая агрегация интерфеейсов
+
+    Configuration - Example 1
+    Modify the /etc/network/interfaces file:
+    auto bond0
+    iface bond0 inet static
+        address 10.31.1.5
+        netmask 255.255.255.0
+        network 10.31.1.0
+        gateway 10.31.1.254
+        bond-slaves eth0 eth1
+        bond-mode active-backup
+        bond-miimon 100
+        bond-downdelay 200
+        bond-updelay 200
+
+5
+    в сети с маской /29 6 рабочих и один бродкастный, если разбить сеть 10.10.10.0/24 на подсети /29 то получится
+    31 подсетей
+    10.10.10.0/29
+    10.10.10.8/29
+    10.10.10.16/29
+    ..............
+    10.10.10.248/29
+
+6
+    Для этих целей есть дополнительная сеть 100.64.0.0/10 если нам необходима сеть из расчета 40-50 хостов то необходимо
+    использовать 100.64.0.0/26 или маска будет 255.255.255.192
+
+7
+    Проверить ARP таблицу можно коммандой arp -a из пакета net-tools
+    очитсить кэш можно командой sudo ip neigh flush all
+    для удаления одного ip из ARP таблицы используется команда arp -d <ip>
