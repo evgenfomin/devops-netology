@@ -1,0 +1,214 @@
+1
+    route-views>show ip route 62.217.188.140
+    Routing entry for 62.217.184.0/21
+      Known via "bgp 6447", distance 20, metric 0
+      Tag 6939, type external
+      Last update from 64.71.137.241 2d00h ago
+      Routing Descriptor Blocks:
+      * 64.71.137.241, from 64.71.137.241, 2d00h ago
+          Route metric is 0, traffic share count is 1
+          AS Hops 2
+          Route tag 6939
+          MPLS label: none
+
+    route-views>show bgp 62.217.188.140
+    BGP routing table entry for 62.217.184.0/21, version 1023748180
+    Paths: (24 available, best #22, table default)
+      Not advertised to any peer
+      Refresh Epoch 1
+      3356 20485 35598 41275
+        4.68.4.46 from 4.68.4.46 (4.69.184.201)
+          Origin IGP, metric 0, localpref 100, valid, external
+          Community: 3356:2 3356:22 3356:100 3356:123 3356:501 3356:901 3356:2065 20485:10099
+          path 7FE0DBA38BB8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      3549 3356 20485 35598 41275
+        208.51.134.254 from 208.51.134.254 (67.16.168.191)
+          Origin IGP, metric 0, localpref 100, valid, external
+          Community: 3356:2 3356:22 3356:100 3356:123 3356:501 3356:901 3356:2065 3549:2581 3549:30840 20485:10099
+          path 7FE036944D70 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      701 1273 12389 41275
+        137.39.3.55 from 137.39.3.55 (137.39.3.55)
+          Origin IGP, localpref 100, valid, external
+          path 7FE0E8D87E88 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      53767 14315 6453 6453 20485 35598 41275
+        162.251.163.2 from 162.251.163.2 (162.251.162.3)
+          Origin IGP, localpref 100, valid, external
+          Community: 14315:5000 53767:5000
+          path 7FE15388E880 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      7018 3257 12389 41275
+        12.0.1.63 from 12.0.1.63 (12.0.1.63)
+          Origin IGP, localpref 100, valid, external
+          Community: 7018:5000 7018:37232
+          path 7FE02364D178 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      101 3491 20485 20485 35598 41275
+        209.124.176.223 from 209.124.176.223 (209.124.176.223)
+          Origin IGP, localpref 100, valid, external
+          Community: 101:20300 101:22100 3491:300 3491:311 3491:9001 3491:9080 3491:9081 3491:9087 3491:62210 3491:62220 20485:10099
+          path 7FE167309CC0 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      1221 4637 3257 12389 41275
+        203.62.252.83 from 203.62.252.83 (203.62.252.83)
+          Origin IGP, localpref 100, valid, external
+          path 7FE0FD8557C0 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      3267 41275
+        194.85.40.15 from 194.85.40.15 (185.141.126.1)
+          Origin IGP, metric 0, localpref 100, valid, external
+          path 7FE00CF32EA0 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      3333 41275
+        193.0.0.56 from 193.0.0.56 (193.0.0.56)
+          Origin IGP, localpref 100, valid, external
+          path 7FE0E984F4D8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      57866 1299 12389 41275
+        37.139.139.17 from 37.139.139.17 (37.139.139.17)
+          Origin IGP, metric 0, localpref 100, valid, external
+          Community: 1299:30000 57866:100 57866:101 57866:501
+          path 7FE110E16470 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      852 31133 35598 41275
+        154.11.12.212 from 154.11.12.212 (96.1.209.43)
+          Origin IGP, metric 0, localpref 100, valid, external
+          path 7FE0118E4E78 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      20130 6939 41275
+        140.192.8.16 from 140.192.8.16 (140.192.8.16)
+          Origin IGP, localpref 100, valid, external
+          path 7FE02B719CD0 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 2
+      3303 41275
+        217.192.89.50 from 217.192.89.50 (138.187.128.158)
+          Origin IGP, localpref 100, valid, external
+          Community: 3303:1004 3303:1006 3303:1030 3303:3056 35598:100 35598:400 35598:418
+          path 7FE017E0C1B8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      20912 3257 12389 41275
+        212.66.96.126 from 212.66.96.126 (212.66.96.126)
+          Origin IGP, localpref 100, valid, external
+          Community: 3257:4000 3257:8794 3257:50001 3257:50110 3257:54900 3257:54901 20912:65004
+          path 7FE142708FE8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      3561 3910 3356 20485 35598 41275
+        206.24.210.80 from 206.24.210.80 (206.24.210.80)
+          Origin IGP, localpref 100, valid, external
+          path 7FE130581588 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 4
+      8283 41275
+        94.142.247.3 from 94.142.247.3 (94.142.247.3)
+          Origin IGP, metric 0, localpref 100, valid, external
+          Community: 8283:1 8283:101 8283:103
+          unknown transitive attribute: flag 0xE0 type 0x20 length 0x24
+            value 0000 205B 0000 0000 0000 0001 0000 205B
+                  0000 0005 0000 0001 0000 205B 0000 0005
+                  0000 0003
+          path 7FE01642E998 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      49788 12552 41275
+        91.218.184.60 from 91.218.184.60 (91.218.184.60)
+          Origin IGP, localpref 100, valid, external
+          Community: 12552:12000 12552:12600 12552:12601 12552:22000
+          Extended Community: 0x43:100:0
+          path 7FE04175FD70 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      4901 6079 31133 35598 41275
+        162.250.137.254 from 162.250.137.254 (162.250.137.254)
+          Origin IGP, localpref 100, valid, external
+          Community: 65000:10100 65000:10300 65000:10400
+          path 7FE10E73F010 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      2497 12389 41275
+        202.232.0.2 from 202.232.0.2 (58.138.96.254)
+          Origin IGP, localpref 100, valid, external
+          path 7FE0C92DD458 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      1351 6939 41275
+        132.198.255.253 from 132.198.255.253 (132.198.255.253)
+          Origin IGP, localpref 100, valid, external
+          path 7FE11B66B2C8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      7660 2516 12389 41275
+        203.181.248.168 from 203.181.248.168 (203.181.248.168)
+          Origin IGP, localpref 100, valid, external
+          Community: 2516:1050 7660:9001
+          path 7FE0FA957628 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      6939 41275
+        64.71.137.241 from 64.71.137.241 (216.218.252.164)
+          Origin IGP, localpref 100, valid, external, best
+          path 7FE1459A8A70 RPKI State valid
+          rx pathid: 0, tx pathid: 0x0
+      Refresh Epoch 1
+      19214 3257 12389 41275
+        208.74.64.40 from 208.74.64.40 (208.74.64.40)
+          Origin IGP, localpref 100, valid, external
+          Community: 3257:4000 3257:8794 3257:50001 3257:50110 3257:54900 3257:54901
+          path 7FE02DB98450 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+      Refresh Epoch 1
+      3257 12389 41275
+        89.149.178.10 from 89.149.178.10 (213.200.83.26)
+          Origin IGP, metric 10, localpref 100, valid, external
+          Community: 3257:4000 3257:8794 3257:50001 3257:50110 3257:54900 3257:54901
+          path 7FE07F23DAC8 RPKI State valid
+          rx pathid: 0, tx pathid: 0
+
+2
+    root@vagrant:~# ip -br link
+    lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP>
+    eth0             UP             08:00:27:73:60:cf <BROADCAST,MULTICAST,UP,LOWER_UP>
+    dummy0           UNKNOWN        86:48:12:87:a4:e3 <BROADCAST,NOARP,UP,LOWER_UP>
+
+    root@vagrant:~# ip route
+    default via 10.0.2.2 dev eth0 proto dhcp src 10.0.2.15 metric 100
+    10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15
+    10.0.2.2 dev eth0 proto dhcp scope link src 10.0.2.15 metric 100
+    10.0.2.16 via 10.0.2.15 dev eth0
+
+3
+    root@vagrant:~# netstat -ntpl | grep LISTEN
+    tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/init
+    tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      559/systemd-resolve
+    tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      836/sshd: /usr/sbin
+    tcp6       0      0 :::111                  :::*                    LISTEN      1/init
+    tcp6       0      0 :::22                   :::*                    LISTEN      836/sshd: /usr/sbin
+
+4
+    root@vagrant:~# netstat -nupl
+    Active Internet connections (only servers)
+    Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+    udp        0      0 127.0.0.53:53           0.0.0.0:*                           559/systemd-resolve
+    udp        0      0 10.0.2.15:68            0.0.0.0:*                           404/systemd-network
+    udp        0      0 0.0.0.0:111             0.0.0.0:*                           1/init
+    udp6       0      0 :::111                  :::*                                1/init
+
+5
+    Домашня сеть у меня самая простая, но главное же понять что есть такой инструмент с которым можно работать как
+    diagrams.net, а на работе я не знаю всю топологию сети, работаю только с удаленными хостами
+    https://github.com/evgenfomin/devops-netology/blob/main/terminal/Screenshot%20from%202021-09-16%2010-52-25.png
