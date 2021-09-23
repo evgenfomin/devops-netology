@@ -1,0 +1,4 @@
+3
+    Настроил nginx, создал страницу для проверки, создал для этой страницы сертификат самоподписной на 10 лет
+    https://github.com/evgenfomin/devops-netology/blob/main/terminal/Screenshot%20from%202021-09-23%2011-10-23.png
+
