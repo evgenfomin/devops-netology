@@ -2,3 +2,89 @@
     Настроил nginx, создал страницу для проверки, создал для этой страницы сертификат самоподписной на 10 лет
     https://github.com/evgenfomin/devops-netology/blob/main/terminal/Screenshot%20from%202021-09-23%2011-10-23.png
 
+4
+    ./testssl.sh -U --sneaky https://www.regium.com/
+
+    ###########################################################
+        testssl.sh       3.1dev from https://testssl.sh/dev/
+        (ae21ef7 2021-09-15 11:19:05 -- )
+
+          This program is free software. Distribution and
+                 modification under GPLv2 permitted.
+          USAGE w/o ANY WARRANTY. USE IT AT YOUR OWN RISK!
+
+           Please file bugs @ https://testssl.sh/bugs/
+
+    ###########################################################
+
+     Using "OpenSSL 1.0.2-chacha (1.0.2k-dev)" [~183 ciphers]
+     on evgeniyPR:./bin/openssl.Linux.x86_64
+     (built: "Jan 18 17:12:17 2019", platform: "linux-x86_64")
+
+
+     Start 2021-09-23 18:21:53        -->> 185.177.59.68:443 (www.regium.com) <<--
+
+     rDNS (185.177.59.68):   ag01.iagetec.com.
+     Service detected:       HTTP
+
+
+     Testing vulnerabilities
+
+     Heartbleed (CVE-2014-0160)                not vulnerable (OK), no heartbeat extension
+     CCS (CVE-2014-0224)                       not vulnerable (OK)
+     Ticketbleed (CVE-2016-9244), experiment.  not vulnerable (OK), no session ticket extension
+     ROBOT                                     not vulnerable (OK)
+     Secure Renegotiation (RFC 5746)           supported (OK)
+     Secure Client-Initiated Renegotiation     not vulnerable (OK)
+     CRIME, TLS (CVE-2012-4929)                not vulnerable (OK)
+     BREACH (CVE-2013-3587)                    no gzip/deflate/compress/br HTTP compression (OK)  - only supplied "/" tested
+     POODLE, SSL (CVE-2014-3566)               not vulnerable (OK)
+     TLS_FALLBACK_SCSV (RFC 7507)              Downgrade attack prevention supported (OK)
+     SWEET32 (CVE-2016-2183, CVE-2016-6329)    not vulnerable (OK)
+     FREAK (CVE-2015-0204)                     not vulnerable (OK)
+     DROWN (CVE-2016-0800, CVE-2016-0703)      not vulnerable on this host and port (OK)
+                                               make sure you don't use this certificate elsewhere with SSLv2 enabled services
+                                               https://censys.io/ipv4?q=DFA8A5A808891F8C16B20D0CE8B84B0FBE5D3AC8B895CCA3BC7950F941E65BC0 could help you to find out
+     LOGJAM (CVE-2015-4000), experimental      not vulnerable (OK): no DH EXPORT ciphers, no DH key detected with <= TLS 1.2
+     BEAST (CVE-2011-3389)                     TLS1: ECDHE-RSA-AES256-SHA ECDHE-RSA-AES128-SHA AES256-SHA CAMELLIA256-SHA AES128-SHA CAMELLIA128-SHA
+                                               VULNERABLE -- but also supports higher protocols  TLSv1.1 TLSv1.2 (likely mitigated)
+     LUCKY13 (CVE-2013-0169), experimental     potentially VULNERABLE, uses cipher block chaining (CBC) ciphers with TLS. Check patches
+     Winshock (CVE-2014-6321), experimental    not vulnerable (OK)
+     RC4 (CVE-2013-2566, CVE-2015-2808)        no RC4 ciphers detected (OK)
+
+
+     Done 2021-09-23 18:22:46 [  54s] -->> 185.177.59.68:443 (www.regium.com) <<--
+
+5
+    evgeniy@vmubuntuserver:~$ ssh evgeniy@192.168.1.14
+    Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-84-generic x86_64)
+
+6
+    evgeniy@evgeniyPR:~$ ssh VMUbuntuServer
+    Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-84-generic x86_64)
+    *** System restart required ***
+    Last login: Thu Sep 23 15:26:27 2021 from 192.168.1.14
+    evgeniy@vmubuntuserver:~$
+
+7
+    evgeniy@vmubuntuserver:~$ sudo tcpdump -c 100 -w /home/evgeniy/test/test.pcap -i enp0s3
+    [sudo] password for evgeniy:
+    tcpdump: listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+    100 packets captured
+    152 packets received by filter
+    0 packets dropped by kernel
+    evgeniy@vmubuntuserver:~$
+
+9
+    root@vmubuntuserver:~# ufw status
+    Status: active
+
+    To                         Action      From
+    --                         ------      ----
+    22                         ALLOW       Anywhere
+    80                         ALLOW       Anywhere
+    443                        ALLOW       Anywhere
+    22 (v6)                    ALLOW       Anywhere (v6)
+    80 (v6)                    ALLOW       Anywhere (v6)
+    443 (v6)                   ALLOW       Anywhere (v6)
+
