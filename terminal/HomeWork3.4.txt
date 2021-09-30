@@ -1,5 +1,17 @@
 1
     Создал юнит для запуска node_exporter
+        [Unit]
+        Description=Prometheus Node Exporter
+        Wants=network-online.target
+        After=network-online.target
+        [Service]
+        User=node_exporter
+        Group=node_exporter
+        Type=simple
+        ExecStart=/usr/local/bin/node_exporter
+        [Install]
+        WantedBy=multi-user.target
+
     sudo systemctl start node_exporter
     evgeniy@vmubuntuserver:~$ sudo systemctl status node_exporter
     ● node_exporter.service - Prometheus Node Exporter
@@ -15,6 +27,69 @@
     Created symlink /etc/systemd/system/multi-user.target.wants/node_exporter.service → /etc/systemd/system/node_exporter.service.
     После перезагрузки все корректно поднялось
 
+2
+    CPU:
+        node_cpu_seconds_total{cpu="0",mode="idle"} 2238.49
+        node_cpu_seconds_total{cpu="0",mode="system"} 16.72
+        node_cpu_seconds_total{cpu="0",mode="user"} 6.86
+        process_cpu_seconds_total
+
+    Memory:
+        node_memory_MemAvailable_bytes
+        node_memory_MemFree_bytes
+
+    Disk(если несколько дисков то для каждого):
+        node_disk_io_time_seconds_total{device="sda"}
+        node_disk_read_bytes_total{device="sda"}
+        node_disk_read_time_seconds_total{device="sda"}
+        node_disk_write_time_seconds_total{device="sda"}
+
+    Network(так же для каждого активного адаптера):
+        node_network_receive_errs_total{device="eth0"}
+        node_network_receive_bytes_total{device="eth0"}
+        node_network_transmit_bytes_total{device="eth0"}
+        node_network_transmit_errs_total{device="eth0"}
+
+3
+    У меня виртуальная машина настроена с сетевым мостом, поэтому после установки и настройки netdata добавил порт 19999
+    в ufw, поменял имя пользователя и получилось подключиться.
+    скриншот тут https://github.com/evgenfomin/devops-netology/blob/main/terminal/Screenshot%20from%202021-09-30%2009-00-19.png
+
+4
+    да, можно
+    evgeniy@vmubuntuserver:~$ dmesg | grep virt
+    [    0.003246] CPU MTRRs all blank - virtualized system.
+    [    0.082911] Booting paravirtualized kernel on KVM
+    [    3.107461] systemd[1]: Detected virtualization oracle.
+
+5
+    evgeniy@vmubuntuserver:~$ sysctl fs.nr_open
+    fs.nr_open = 1048576
+    данный параметр показывает максимальное количество открытых дискрипторов для ядра.
+    Для пользователя задать больше этого числа нельзя
+    ulimit -Sn Мягкий лимит (ulimit -n) на пользователя. Может быть увеличен в процессе работы
+    ulimit -Hn Жесткий лимит на пользователя не может быть увеличен, только уменьшен
+
+6
+    evgeniy@vmubuntuserver:~$ sudo -i
+    [sudo] password for evgeniy:
+    root@vmubuntuserver:~# ps aux | grep sleep
+    root       19979  0.0  0.0   4260   528 pts/2    S+   06:46   0:00 sleep 1h
+    root       19985  0.0  0.0   5192   736 pts/0    S+   06:47   0:00 grep --color=auto sleep
+    root@vmubuntuserver:~# nsenter --target 19979 --pid --mount
+    root@vmubuntuserver:/# ps
+        PID TTY          TIME CMD
+         10 pts/0    00:00:00 bash
+         21 pts/0    00:00:00 ps
+    root@vmubuntuserver:/#
+
+7
+    Это функция, которая после поределения запускает саму себя и пораждает два фоновых процесса самой себя, получается
+    некая функция плодящая процессы
 
 
+    [ 3099.973235] cgroup: fork rejected by pids controller in /user.slice/user-1000.slice/session-4.scope
+    [ 3103.171819] cgroup: fork rejected by pids controller in /user.slice/user-1000.slice/session-11.scope
 
+    ulimit -u n
+    n - это количество процессов для пользователя
