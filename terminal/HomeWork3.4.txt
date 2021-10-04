@@ -1,4 +1,16 @@
 1
+    Файл Unit будет теперь такой:
+    [Unit]
+    Description=Prometheus Node Exporter
+    [Service]
+    User=node_exporter
+    Group=node_exporter
+    Type=simple
+    ExecStart=/usr/local/bin/node_exporter
+    EnvironmentFile=/etc/default/node_exporter.conf
+    [Install]
+    WantedBy=multi-user.target
+
     так же можно использовать переменые, для этого в самом конфиге надо указать где хранится файл с переменными в
     секции:
         [Service]
