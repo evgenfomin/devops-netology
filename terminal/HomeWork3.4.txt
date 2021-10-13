@@ -1,74 +1,17 @@
-1 У меня появляется ошибка когда я добавляю переменную, подскажите что я делаю не так
-    unit file
+1
+    Файл Unit будет теперь такой:
 [Unit]
 Description=Prometheus Node Exporter
 [Service]
-User=node_exporter
-Group=node_exporter
 Type=simple
 EnvironmentFile=/etc/default/node_exporter.conf
-ExecStart=${MY_PATH}/node_exporter -C ${MY_PATH}/etc/default/node_exporter.conf
+User=$User
+Group=node_exporter
+ExecStart=/usr/local/bin/node_exporter  $User
 [Install]
 WantedBy=multi-user.target
 
-    EnvironmentFile:
-MY_PATH=/usr/local/bin
 
-    systemctl status:
-Oct 06 07:28:08 vmubuntuserver systemd[1]: /etc/systemd/system/node_exporter.service:8: Neither a valid executable name nor an absolute path: ${MY_PATH}/node_exporter
-Oct 06 07:28:08 vmubuntuserver systemd[1]: node_exporter.service: Unit configuration has fatal error, unit will not be started.
-Oct 06 07:30:03 vmubuntuserver systemd[1]: /etc/systemd/system/node_exporter.service:8: Neither a valid executable name nor an absolute path: $MY_PATH/node_exporter
-Oct 06 07:30:03 vmubuntuserver systemd[1]: node_exporter.service: Unit configuration has fatal error, unit will not be started.
-Oct 06 07:32:24 vmubuntuserver systemd[1]: /etc/systemd/system/node_exporter.service:8: Neither a valid executable name nor an absolute path: ${MY_PATH}/node_exporter
-Oct 06 07:32:24 vmubuntuserver systemd[1]: node_exporter.service: Unit configuration has fatal error, unit will not be started.
-Oct 06 07:33:02 vmubuntuserver systemd[1]: /etc/systemd/system/node_exporter.service:8: Neither a valid executable name nor an absolute path: ${MY_PATH}/node_exporter
-Oct 06 07:33:02 vmubuntuserver systemd[1]: node_exporter.service: Unit configuration has fatal error, unit will not be started.
-Oct 06 07:35:05 vmubuntuserver systemd[1]: /etc/systemd/system/node_exporter.service:8: Neither a valid executable name nor an absolute path: ${MY_PATH}/node_exporter
-Oct 06 07:35:05 vmubuntuserver systemd[1]: node_exporter.service: Unit configuration has fatal error, unit will not be started.
-
-
-
-
-
-
-
-
-
-
-
-    Файл Unit будет теперь такой:
-    [Unit]
-    Description=Prometheus Node Exporter
-    [Service]
-    User=node_exporter
-    Group=node_exporter
-    Type=simple
-    ExecStart=/usr/local/bin/node_exporter
-    EnvironmentFile=/etc/default/node_exporter.conf
-    [Install]
-    WantedBy=multi-user.target
-
-    так же можно использовать переменые, для этого в самом конфиге надо указать где хранится файл с переменными в
-    секции:
-        [Service]
-        Environment
-    и тогда можно задавать значения переменынх
-    Так же во время работы юнита можно вызвать этот юнит на редактирование systemctl edit myservice это создаст каталог
-    /etc/systemd/system/myservice.service.d, а внутри этого каталога создаст файл .conf и в этом файле мы можем добавить
-    или переопределить любую часть юнита
-
-    Создал юнит для запуска node_exporter
-        [Unit]
-        Description=Prometheus Node Exporter
-        Wants=network-online.target
-        After=network-online.target
-        [Service]
-        User=node_exporter
-        Group=node_exporter
-        Type=simple
-        ExecStart=/usr/local/bin/node_exporter
-        [Install]
-        WantedBy=multi-user.target
 
     sudo systemctl start node_exporter
     evgeniy@vmubuntuserver:~$ sudo systemctl status node_exporter
