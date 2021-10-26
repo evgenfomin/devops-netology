@@ -1,16 +1,10 @@
 #!/usr/bin/env python3
-import socket
-import json
-import yaml
+import socket, json, yaml
 
-dnsdrivegoogle = 'drive.google.com'
-dnsmailgoogle = 'mail.google.com'
-dnsgoogle = 'google.com'
-ipdrivegoogle = socket.gethostbyname(dnsdrivegoogle)
-ipmailgoogle = socket.gethostbyname(dnsmailgoogle)
-ipgoogle = socket.gethostbyname(dnsgoogle)
+ipdict = { 'drive.google.com': '', 'mail.google.com': '', 'google.com': ''}
+for domain in ipdict:
+    ipdict[domain] = socket.gethostbyname(domain)
 
-ipdict = { dnsdrivegoogle: ipdrivegoogle, dnsmailgoogle: ipmailgoogle, dnsgoogle: ipgoogle}
 with open('server.json', 'w') as js:
     js.write(json.dumps(ipdict, indent=2))
 
