@@ -46,7 +46,7 @@ vagrant@server1:~/data$ ls -la \
 total 12 \
 drwxrwxr-x 2 vagrant vagrant 4096 Nov  8 07:19 . \
 drwxr-xr-x 9 vagrant vagrant 4096 Nov  8 06:51 .. \
--rw-r--r-- 1 root    root       5 Nov  8 07:18 1.txt \ 
+-rw-r--r-- 1 root    root       5 Nov  8 07:18 1.txt  
 -rw-rw-r-- 1 vagrant vagrant    0 Nov  8 07:19 2.txt \
 
 debian: \
@@ -57,4 +57,6 @@ drwxr-xr-x 1 root root 4096 Nov  8 07:08 .. \
 -rw-r--r-- 1 root root    5 Nov  8 07:18 1.txt \
 -rw-rw-r-- 1 1000 1000    0 Nov  8 07:19 2.txt \
 
+4\
 
+https://hub.docker.com/repository/docker/29072014/ansible
