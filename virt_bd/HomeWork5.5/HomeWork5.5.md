@@ -1,3 +1,14 @@
+1\
+replication - сервис запускается только на тех нодах на которых мы задаем \
+global - сервис запускается на всех нодах \
+\
+лидер задается вручную командой docker swarm init, если данная нода упала то лидером может  \
+стать любая из управляющих нод \
+\
+Overlay-сеть создает подсеть, которую могут использовать контейнеры в разных хостах swarm-кластера.\
+Контейнеры на разных физических хостах могут обмениваться данными по overlay-сети \
+(если все они прикреплены к одной сети).
+
 2 \
 все получилось \
 https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-26-01.png \
@@ -6,6 +17,7 @@ https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Scre
 https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-28-00.png \
 \
 4 \
-можно добавить дополнительную уровень безопасности создав ключи
-если докер уже запушен, то как раз командой docker swarm update --autolock=true \
-мы активируем даную функцию
+Vожно добавить дополнительную уровень безопасности создав ключи \
+Если докер уже запушен, то как раз командой docker swarm update --autolock=true \
+мы активируем даную функцию \
+https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-51-40.png \
