@@ -11,13 +11,13 @@ Overlay-сеть создает подсеть, которую могут исп
 
 2 \
 все получилось \
-https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-26-01.png \
+![alt docker node ls](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-26-01.png) \
 \
 3 \
-https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-28-00.png \
+![alt docker service ls](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-28-00.png) \
 \
 4 \
 Vожно добавить дополнительную уровень безопасности создав ключи \
 Если докер уже запушен, то как раз командой docker swarm update --autolock=true \
 мы активируем даную функцию \
-https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-51-40.png \
+![alt docker swarm update](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork5.5/Screenshot%20from%202021-11-23%2010-51-40.png) \
