@@ -1,0 +1,14 @@
+version: "2"
+services:
+  postgres:
+    image: postgresql:12.9
+    environment:
+      POSTGRES_DB: "test_db"
+      POSTGRES_USER: "test-admin-user"
+      POSTGRES_PASSWORD: "MB8R3mW3nR"
+      PGDATE: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
