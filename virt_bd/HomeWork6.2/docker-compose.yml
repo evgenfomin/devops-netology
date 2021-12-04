@@ -1,14 +1,13 @@
-version: "2"
+version: "3.9"
 services:
   postgres:
-    image: postgresql:12.9
+    image: "postgres:12.9"
+    container_name: "postgres"
     environment:
-      POSTGRES_DB: "test_db"
-      POSTGRES_USER: "test-admin-user"
-      POSTGRES_PASSWORD: "MB8R3mW3nR"
-      PGDATE: "/var/lib/postgresql/data/pgdata"
+      POSTGRES_PASSWORD: "pgpwd4habr"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
     volumes:
-      - ../2. Init Database:/docker-entrypoint-initdb.d
-      - .:/var/lib/postgresql/data
+      - "/home/evgeniy/test/sql/data:/var/lib/postgresql/data/pgdata"
+      - "/home/evgeniy/test/sql/backup:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
