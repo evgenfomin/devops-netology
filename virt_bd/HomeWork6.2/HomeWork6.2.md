@@ -62,13 +62,13 @@ test_db=# GRANT DELETE ON ALL TABLES IN SCHEMA public TO "test-simple-user"
 GRANT
 ```
 Итоговый список БД
-![итоговый список баз данных](./Screenshot from 2021-12-04 13-42-10.png)
+![итоговый список баз данных](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork6.2/Screenshot%20from%202021-12-04%2013-42-10.png)
 Описание таблицы orders:
-![orders](./Screenshot from 2021-12-04 15-56-06.png)
+![orders](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork6.2/Screenshot%20from%202021-12-04%2015-56-06.png)
 Описание таблицы clients:
-![clients](./Screenshot from 2021-12-04 15-58-59.png)
+![clients](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork6.2/Screenshot%20from%202021-12-04%2015-58-59.png)
 SQL запрос и сама таблица с правами нат таблицами
-![sql_order](./Screenshot from 2021-12-04 16-06-14.png)
+![sql_order](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork6.2/Screenshot%20from%202021-12-04%2016-06-14.png)
 
 3\
 
