@@ -71,4 +71,81 @@ GRANT
 SQL запрос и сама таблица с правами нат таблицами \
 ![sql_order](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork6.2/Screenshot%20from%202021-12-04%2016-06-14.png) \
 
-3\
+3 \
+```
+test_db=# INSERT INTO orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
+INSERT 0 5
+test_db=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоган Себастьян Бах', 'Japan');
+INSERT 0 3
+test_db=# INSERT INTO clients VALUES (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
+INSERT 0 2
+test_db=# SELECT COUNT (*) FROM orders;
+ count 
+-------
+     5
+(1 row)
+
+test_db=# SELECT COUNT (*) FROM clients;
+ count 
+-------
+     5
+(1 row)
+```
+4 \
+```
+test_db=# UPDATE clients set booking=3 where id=1;
+UPDATE 1
+test_db=# UPDATE clients set booking=4 where id=2;
+UPDATE 1
+test_db=# UPDATE clients set booking=5 where id=3;
+test_db=# SELECT * FROM clients where booking is not null
+test_db-# ;
+ id |       lastname       | country | booking 
+----+----------------------+---------+---------
+  1 | Иванов Иван Иванович | USA     |       3
+  2 | Петров Петр Петрович | Canada  |       4
+  3 | Иоган Себастьян Бах  | Japan   |       5
+(3 rows)
+```
+5 \
+```
+test_db=# EXPLAIN SELECT * FROM clients where booking is not null;
+                        QUERY PLAN                         
+-----------------------------------------------------------
+ Seq Scan on clients  (cost=0.00..18.10 rows=806 width=72)
+   Filter: (booking IS NOT NULL)
+(2 rows)
+
+test_db=# 
+```
+Показывает стоимость(нагрузку на исполнение) запроса , и фильтрацию по полю Booking для выборки.
+
+6 \
+Команда для создания dump: \
+pg_dump -U postgres -W test_db > /var/lib/postgresql/data/backup_test_db\
+Восстановление: \n
+psql -U postgres test_db < /var/lib/postgresql/data/backup_test_db \n
+```
+test_db=# SELECT * FROM orders;
+ id |  name   | price 
+----+---------+-------
+  1 | Шоколад |    10
+  2 | Принтер |  3000
+  3 | Книга   |   500
+  4 | Монитор |  7000
+  5 | Гитара  |  4000
+(5 rows)
+
+test_db=# SELECT * FROM clients;
+ id |       lastname       | country | booking 
+----+----------------------+---------+---------
+  4 | Ронни Джеймс Дио     | Russia  |        
+  5 | Ritchie Blackmore    | Russia  |        
+  1 | Иванов Иван Иванович | USA     |       3
+  2 | Петров Петр Петрович | Canada  |       4
+  3 | Иоган Себастьян Бах  | Japan   |       5
+(5 rows)
+
+test_db=# 
+
+```
