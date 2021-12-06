@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  postgres:
+    image: "postgres:13.5"
+    container_name: "postgres2"
+    environment:
+      POSTGRES_PASSWORD: "pgpwd4habr"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - "/home/evgeniy/test/sql/pg_data:/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"
