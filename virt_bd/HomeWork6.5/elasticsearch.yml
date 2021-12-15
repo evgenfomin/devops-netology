@@ -14,14 +14,14 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: netology_claster_test
+cluster.name: netology_test
 discovery.type: single-node
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-node.name: netology_test
+# node.name: netology_test
 #
 # Add custom attributes to the node:
 #
@@ -41,7 +41,7 @@ path.logs: /var/lib/logs
 #for Image from YUM (esp)
 #path.repo: /usr/share/elasticsearch/snapshots
 #for Image from TAR (est)
-path.repo: /elasticsearch-7.16.0/snapshots
+path.repo: /usr/share/elasticsearch/snapshots
 #
 # ----------------------------------- Memory -----------------------------------
 #
