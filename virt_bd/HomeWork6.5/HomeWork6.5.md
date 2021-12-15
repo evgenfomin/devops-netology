@@ -84,5 +84,20 @@ vgeniy@evgeniyPR:~$ curl http://localhost:9200/_cluster/health?pretty
 }
 ```
 Часть индексов желтые потому что указанно количество реплик, но на самом деле их нет т.к одна нода \
+Удалите все индексы:
+```
+evgeniy@evgeniyPR:~$ curl -XDELETE localhost:9200/ind-1?pretty
+{
+  "acknowledged" : true
+}
+evgeniy@evgeniyPR:~$ curl -XDELETE localhost:9200/ind-2?pretty
+{
+  "acknowledged" : true
+}
+evgeniy@evgeniyPR:~$ curl -XDELETE localhost:9200/ind-3?pretty
+{
+  "acknowledged" : true
+}
+```
 
 3 \
