@@ -101,3 +101,68 @@ evgeniy@evgeniyPR:~$ curl -XDELETE localhost:9200/ind-3?pretty
 ```
 
 3 \
+Используя API зарегистрируйте данную директорию как snapshot repository c именем netology_backup: \
+```
+root@evgeniy-PR:~# curl -XPOST localhost:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d'{"type": "fs", "settings": { "location":"/usr/share/elasticsearch/snapshots" }}'
+{
+  "acknowledged" : true
+}
+```
+Приведите в ответе запрос API и результат вызова API для создания репозитория \
+root@evgeniy-PR:~# curl -XGET localhost:9200/_snapshot/netology_backup?pretty
+{
+  "netology_backup" : {
+    "type" : "fs",
+    "settings" : {
+      "location" : "/usr/share/elasticsearch/snapshots"
+    }
+  }
+}
+Создайте индекс test с 0 реплик и 1 шардом и приведите в ответе список индексов \
+```
+root@evgeniy-PR:~# curl -XGET localhost:9200/_cat/indices
+green open .geoip_databases tEw7-yfKSwmbbj9QGFRLhg 1 0 42 0 41.2mb 41.2mb
+green open test             vZhT8-B4SqmJm2-HHqvLtg 1 0  0 0   226b   226b
+```
+Создайте snapshot состояния кластера elasticsearch \
+```
+root@evgeniy-PR:~# curl -XPUT localhost:9200/_snapshot/netology_backup/my_backup?wait_for_completion=true
+{"snapshot":{"snapshot":"my_backup","uuid":"EHc2DuY3S_KG94r-o_JVzg","repository":"netology_backup","version_id":7160199,"version":"7.16.1","indices":["test",".geoip_databases",".ds-.logs-deprecation.elasticsearch-default-2021.12.16-000001",".ds-ilm-history-5-2021.12.16-000001"],"data_streams":["ilm-history-5",".logs-deprecation.elasticsearch-default"],"include_global_state":true,"state":"SUCCESS","start_time":"2021-12-16T09:12:25.254Z","start_time_in_millis":1639645945254,"end_time":"2021-12-16T09:12:26.254Z","end_time_in_millis":1639645946254,"duration_in_millis":1000,"failures":[],"shards":{"total":4,"failed":0,"successful":4},"feature_states":[{"feature_name":"geoip","indices":[".geoip_databases"]}]}}
+```
+Приведите в ответе список файлов в директории со snapshotами
+```
+bash-4.2$ ls -lh /usr/share/elasticsearch/snapshots/
+total 48K
+-rw-r--r-- 1 elasticsearch elasticsearch 1.4K Dec 16 09:12 index-0
+-rw-r--r-- 1 elasticsearch elasticsearch    8 Dec 16 09:12 index.latest
+drwxr-xr-x 6 elasticsearch elasticsearch 4.0K Dec 16 09:12 indices
+-rw-r--r-- 1 elasticsearch elasticsearch  29K Dec 16 09:12 meta-EHc2DuY3S_KG94r-o_JVzg.dat
+-rw-r--r-- 1 elasticsearch elasticsearch  708 Dec 16 09:12 snap-EHc2DuY3S_KG94r-o_JVzg.dat
+```
+Удалите индекс test и создайте индекс test-2. Приведите в ответе список индексов \
+```
+root@evgeniy-PR:~# curl -XDELETE localhost:9200/test?pretty
+{
+  "acknowledged" : true
+}
+root@evgeniy-PR:~# curl -XPUT localhost:9200/test-2?pretty -H 'Content-Type: application/json' -d'{ "settings": { "number_of_shards": 1,  "number_of_replicas": 0 }}'
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "test-2"
+}
+root@evgeniy-PR:~# curl -XGET localhost:9200/_cat/indices
+green open .geoip_databases tEw7-yfKSwmbbj9QGFRLhg 1 0 42 0 41.2mb 41.2mb
+green open test-2           Zw_GoTkETBW2fH_NW4FsyA 1 0  0 0   226b   226b
+```
+Приведите в ответе запрос к API восстановления и итоговый список индексов \
+```
+root@evgeniy-PR:~# curl -X POST localhost:9200/_snapshot/netology_backup/my_backup/_restore?pretty -H 'Content-Type: application/json' -d'{"indices": "test"}'
+{
+  "accepted" : true
+}
+root@evgeniy-PR:~# curl -XGET localhost:9200/_cat/indices
+green open .geoip_databases tEw7-yfKSwmbbj9QGFRLhg 1 0 42 0 41.2mb 41.2mb
+green open test-2           46GS-dukT-6z8ILZ3rCm9Q 1 0  0 0   226b   226b
+green open test             Ch8dN2ctS1SzLRZuZpL0bQ 1 0  0 0   226b   226b
+```
