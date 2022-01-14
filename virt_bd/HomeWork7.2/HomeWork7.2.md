@@ -1,6 +1,6 @@
 1 \ 
 Зарегистрировался в aws \
-![aws configure list](./Screenshot from 2022-01-13 15-47-59.png)
+![aws configure list](https://github.com/evgenfomin/devops-netology/blob/main/virt_bd/HomeWork7.2/Screenshot%20from%202022-01-13%2015-47-59.png)
 
 2 \
 terraform plan
