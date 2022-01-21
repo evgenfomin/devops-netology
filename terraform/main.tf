@@ -16,9 +16,21 @@ data "aws_ami" "ubuntu" {
 
   owners = ["099720109477"]
 }
+locals {
+  web_instance_type_map = {
+    stage = "t3.micro"
+    prod = "t3.large"
+  }
+  web_instance_count_map = {
+    stage = 1
+    prod = 2
+  }
+}
+
 resource "aws_instance" "web" {
   ami = "data.aws_ami.ubuntu.id"
-  instance_type = "t3.micro"
+  instance_type = local.web_instance_type_map[terraform.workspace]
+  count = local.web_instance_count_map[terraform.workspace]
   cpu_core_count = 2
   
   tags = {
