@@ -1,0 +1,15 @@
+---
+- name: Install elasticserch
+  hosts: el-instance
+  roles:
+    - elastic-role
+
+- name: Install elasticserch
+  hosts: kibana
+  roles:
+    - kibana-role
+
+- name: Install elasticserch
+  hosts: filebeat
+  roles:
+    - filebeat-role
